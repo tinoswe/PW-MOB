@@ -6,29 +6,20 @@ fluidPage(
     
     sidebarPanel(
     
-      selectInput("dataset", "Choose a dataset:",
-                  choices = c("Jan 16",
-                              "Feb 16",
-                              "Mar 16",
-                              "Apr 16",
-                              "May 16",
-                              "Jun 16",
-                              "Jul 16",
-                              "Aug 16",
-                              "Sep 16",
-                              "Oct 16",
-                              "Nov 16",
-                              "Dec 16")
+      selectInput("dataset", "Giornata:",
+                  choices = c("08/05/2017",
+                              "09/05/2017",
+                              "Tutti i dati disponibili")
     )
     ),
     
     mainPanel(
       tabsetPanel(
       
-        tabPanel("Data", dataTableOutput('table')),
+        tabPanel("Dati", dataTableOutput('table')),
         #tabPanel("Charts", plotOutput("plot")),
-        tabPanel("T Chart",dygraphOutput("tgraph")),
-        tabPanel("HR Chart",dygraphOutput("ugraph"))
+        tabPanel("Grafico temperatura",dygraphOutput("tgraph")),
+        tabPanel("Grafico umidità relativa",dygraphOutput("ugraph"))
         
         )
     )
