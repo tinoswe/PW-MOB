@@ -9,6 +9,7 @@ fluidPage(
       selectInput("dataset", "Giornata:",
                   choices = c("08/05/2017",
                               "09/05/2017",
+                              "10/05/2017",
                               "Tutti i dati disponibili")
     )
     ),

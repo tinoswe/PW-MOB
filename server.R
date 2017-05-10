@@ -6,22 +6,20 @@ library(xts)
 source("make_day_frame.R")
 df_080517 <- make_day_frame("080517")
 df_090517 <- make_day_frame("090517")
+df_100517 <- make_day_frame("100517")
 
 df_all <- merge(x = df_080517, 
                 y = df_090517, 
+                all = TRUE)
+
+df_all <- merge(x = df_all, 
+                y = df_100517, 
                 all = TRUE)
 
 df_all$date_time <- paste0(df_all$Day," ", df_all$Time)
 df_all <- df_all[,c(ncol(df_all),1:(ncol(df_all)-1))]
 df_all$date_time <- strptime(df_all$date_time,
                     format="%Y-%m-%d %H:%M:%S")
-
-
-
-#df_all <- merge(x = df_080517, 
-#                y = df_090517, 
-#                by = "", 
-#                all = TRUE)
 
 function(input, output) {
   
@@ -30,6 +28,7 @@ function(input, output) {
     switch(input$dataset,
            "08/05/2017" = df_080517,
            "09/05/2017" = df_090517,
+           "10/05/2017" = df_100517,
            "Tutti i dati disponibili" = df_all)
   })
   
