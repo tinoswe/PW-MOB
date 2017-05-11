@@ -19,16 +19,16 @@ make_day_frame <- function(day_ID){
                     "C_HR",
                     "D_T",
                     "D_HR")
-  df_day <- df[month(df$time)=="5",] 
-  df_day$Day <- as.character(date(df_day$time))
-  df_day$Time <- paste(sprintf("%02d", hour(df_day$time)),
-                          sprintf("%02d", minute(df_day$time)),
-                          sprintf("%02d", second(df_day$time)),
-                          sep=":")
-  df_day$time <- c()
-  df_day <- na.omit(df_day)
+  #df_day <- df[month(df$time)=="5",] 
+  #df_day$Day <- as.character(date(df_day$time))
+  #df_day$Time <- paste(sprintf("%02d", hour(df_day$time)),
+  #                        sprintf("%02d", minute(df_day$time)),
+  #                        sprintf("%02d", second(df_day$time)),
+  #                        sep=":")
+  #df_day$time <- c()
+  df <- na.omit(df)
   
-  return(df_day)
+  return(df)
 
 }
 

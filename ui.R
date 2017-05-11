@@ -1,6 +1,9 @@
 library(dygraphs)
+#install.packages("shinythemes")
+library(shinythemes)
 
 fluidPage(
+  theme = shinytheme("cosmo"),#  
   titlePanel('Monitoraggio temperatura e umidità'),
   sidebarLayout(
     
@@ -10,17 +13,19 @@ fluidPage(
                   choices = c("08/05/2017",
                               "09/05/2017",
                               "10/05/2017",
+                              "11/05/2017",
                               "Tutti i dati disponibili")
-    )
+    ),
+    width=2
     ),
     
     mainPanel(
+      
       tabsetPanel(
       
         tabPanel("Dati", dataTableOutput('table')),
-        #tabPanel("Charts", plotOutput("plot")),
         tabPanel("Grafico temperatura",dygraphOutput("tgraph")),
-        tabPanel("Grafico umidità relativa",dygraphOutput("ugraph"))
+        tabPanel("Grafico umidità relativa (cella)",dygraphOutput("ugraph"))
         
         )
     )
