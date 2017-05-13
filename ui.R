@@ -14,6 +14,8 @@ fluidPage(
                               "09/05/2017",
                               "10/05/2017",
                               "11/05/2017",
+                              #"12/05/2017",#taratura sonde!
+                              "13/05/2017",
                               "Tutti i dati disponibili")
     ),
     width=2
@@ -24,8 +26,10 @@ fluidPage(
       tabsetPanel(
       
         tabPanel("Dati", dataTableOutput('table')),
-        tabPanel("Grafico temperatura",dygraphOutput("tgraph")),
-        tabPanel("Grafico umidità relativa (cella)",dygraphOutput("ugraph"))
+        tabPanel("Grafico temperatura (cella + lab)",dygraphOutput("tgraph")),
+        tabPanel("Grafico umidità relativa (cella)",dygraphOutput("uc_graph")),
+        tabPanel("Grafico umidità relativa (lab)",dygraphOutput("ulab_graph"))
+        
         
         )
     )
