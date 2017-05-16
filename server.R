@@ -10,15 +10,30 @@ df_100517 <- make_day_frame("100517")
 df_110517 <- make_day_frame("110517")
 df_120517 <- make_day_frame("120517")
 df_130517 <- make_day_frame("130517")
+df_140517 <- make_day_frame("140517")
+df_150517 <- make_day_frame("150517")
+df_160517 <- make_day_frame("160517")
 
-frames <- list(df_080517,
+week19_frames <- list(df_080517,
+                      df_090517,
+                      df_100517,
+                      df_110517,
+                      df_120517,
+                      df_130517,
+                      df_140517)
+
+all_frames <- list(df_080517,
                df_090517,
                df_100517,
                df_110517,
                df_120517,
-               df_130517)
+               df_130517,
+               df_140517,
+               df_150517,
+               df_160517)
 
-df_all <- Reduce(function(x, y) merge(x, y, all=TRUE), frames)
+df_w19 <- Reduce(function(x, y) merge(x, y, all=TRUE), week19_frames)
+df_all <- Reduce(function(x, y) merge(x, y, all=TRUE), all_frames)
 
 #head(df_all[, grepl( "time" , names( df_all ) ) | grepl( "cella_HR" , names( df_all ) )])
 #head(df_all[, grepl( "time" , names( df_all ) ) | grepl( "A_HR" , names( df_all ) ) | grepl( "B_HR" , names( df_all ) )])
@@ -47,6 +62,10 @@ function(input, output) {
            "11/05/2017" = df_110517,
            "12/05/2017" = df_120517,#taratura sonde
            "13/05/2017" = df_130517,
+           "14/05/2017" = df_140517,
+           "Settimana 19" = df_w19,
+           "15/05/2017" = df_150517,
+           "16/05/2017" = df_160517,
            "Tutti i dati disponibili" = df_all)
   })
   
@@ -85,9 +104,9 @@ function(input, output) {
     xts(data_T[,names(data_T)!="time"],
         strptime(data_T$time, format = "%Y-%m-%d %H:%M:%S")) %>%
     dygraph() %>%
-      dyAxis("y", valueRange = c(13, 27), label="Temp [°C]") %>% 
-      dyLimit(as.numeric(15), color = "red") %>%
-      dyLimit(as.numeric(25), color = "red") %>%
+      dyAxis("y", valueRange = c(10, 30), label="Temp [°C]") %>% 
+      dyLimit(as.numeric(16), color = "red") %>%
+      dyLimit(as.numeric(24), color = "red") %>%
       dyEvent(c("2017-05-12 07:30:00", "2017-05-12 18:00:00"), c("Inizio taratura", "Fine taratura"), labelLoc = "bottom")
     }
   )

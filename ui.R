@@ -16,6 +16,10 @@ fluidPage(
                               "11/05/2017",
                               #"12/05/2017",#taratura sonde!
                               "13/05/2017",
+                              "14/05/2017",
+                              "Settimana 19",
+                              "15/05/2017",
+                              "16/05/2017",
                               "Tutti i dati disponibili")
     ),
     width=2
