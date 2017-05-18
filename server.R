@@ -13,62 +13,46 @@ df_130517 <- make_day_frame("130517")
 df_140517 <- make_day_frame("140517")
 df_150517 <- make_day_frame("150517")
 df_160517 <- make_day_frame("160517")
+df_170517 <- make_day_frame("170517")
+df_180517 <- make_day_frame("180517")
 
-week19_frames <- list(df_080517,
-                      df_090517,
-                      df_100517,
-                      df_110517,
-                      df_120517,
-                      df_130517,
-                      df_140517)
-
+#function that returns the list of frame names!!
 all_frames <- list(df_080517,
-               df_090517,
-               df_100517,
-               df_110517,
-               df_120517,
-               df_130517,
-               df_140517,
-               df_150517,
-               df_160517)
-
-df_w19 <- Reduce(function(x, y) merge(x, y, all=TRUE), week19_frames)
+                   df_090517,
+                   df_100517,
+                   df_110517,
+                   df_120517,
+                   df_130517,
+                   df_140517,
+                   df_150517,
+                   df_160517,
+                   df_170517,
+                   df_180517)
 df_all <- Reduce(function(x, y) merge(x, y, all=TRUE), all_frames)
 
-#head(df_all[, grepl( "time" , names( df_all ) ) | grepl( "cella_HR" , names( df_all ) )])
-#head(df_all[, grepl( "time" , names( df_all ) ) | grepl( "A_HR" , names( df_all ) ) | grepl( "B_HR" , names( df_all ) )])
-
-#head(df_all)
-#df_all$Day_Time <- paste(df_all$Day, " ", df_all$Time,
-#                         sep="")
-#head(df_all)
-#df_all$Day_Time <- strptime(df_all$Day_Time,
-#                            format="%Y-%m-%d %H:%M:%S")
-#head(df_all)
-#df_all$Day <- c()
-#df_all$Time <- c()
-#head(df_all)
-#df_all<-df_all[,c(ncol(df_all),1:(ncol(df_all)-1))]
-#head(df_all)
 
 function(input, output) {
   
-  datasetInput <- reactive({
-    
-    switch(input$dataset,
-           "08/05/2017" = df_080517,
-           "09/05/2017" = df_090517,
-           "10/05/2017" = df_100517,
-           "11/05/2017" = df_110517,
-           "12/05/2017" = df_120517,#taratura sonde
-           "13/05/2017" = df_130517,
-           "14/05/2017" = df_140517,
-           "Settimana 19" = df_w19,
-           "15/05/2017" = df_150517,
-           "16/05/2017" = df_160517,
-           "Tutti i dati disponibili" = df_all)
-  })
+  datasetInput <-   reactive({
   
+     switch(input$dataset,
+            "Tutti i dati" = df_all,
+            "08/05/2017" = df_080517,
+            "09/05/2017" = df_090517,
+            "10/05/2017" = df_100517,
+            "11/05/2017" = df_110517,
+            "12/05/2017" = df_120517,#taratura sonde
+            "13/05/2017" = df_130517,
+            "14/05/2017" = df_140517,
+            "Settimana 19" = df_w19,
+            "15/05/2017" = df_150517,
+            "16/05/2017" = df_160517,
+            "17/05/2017" = df_170517,
+            "18/05/2017" = df_180517)
+   })
+
+  
+    
   # output$plot <- renderPlot({
   #   library(ggplot2)
   #   library(reshape)
@@ -104,10 +88,10 @@ function(input, output) {
     xts(data_T[,names(data_T)!="time"],
         strptime(data_T$time, format = "%Y-%m-%d %H:%M:%S")) %>%
     dygraph() %>%
-      dyAxis("y", valueRange = c(10, 30), label="Temp [°C]") %>% 
+      dyAxis("y", valueRange = c(13, 32), label="Temp [°C]") %>% 
       dyLimit(as.numeric(16), color = "red") %>%
       dyLimit(as.numeric(24), color = "red") %>%
-      dyEvent(c("2017-05-12 07:30:00", "2017-05-12 18:00:00"), c("Inizio taratura", "Fine taratura"), labelLoc = "bottom")
+      dyEvent(c("2017-05-12 07:30:00", "2017-05-12 23:59:00"), c("Inizio taratura", "Fine taratura"), labelLoc = "bottom")
     }
   )
   
@@ -119,10 +103,10 @@ function(input, output) {
     xts(data_HR[,names(data_HR)!="time"],
         strptime(data_HR$time, format = "%Y-%m-%d %H:%M:%S")) %>%
       dygraph() %>%
-      dyAxis("y", valueRange = c(40, 60), label="HR [%]") %>%
+      dyAxis("y", valueRange = c(20, 80), label="HR [%]") %>%
       dyLimit(as.numeric(45), color = "red") %>%
       dyLimit(as.numeric(55), color = "red") %>%
-      dyEvent(c("2017-05-12 07:30:00", "2017-05-12 18:00:00"), c("Inizio taratura", "Fine taratura"), labelLoc = "bottom")
+      dyEvent(c("2017-05-12 07:30:00", "2017-05-12 23:59:00"), c("Inizio taratura", "Fine taratura"), labelLoc = "bottom")
   })
 
   output$ulab_graph <- renderDygraph({
@@ -133,8 +117,8 @@ function(input, output) {
     xts(data_HR[,names(data_HR)!="time"],
         strptime(data_HR$time, format = "%Y-%m-%d %H:%M:%S")) %>%
       dygraph() %>%
-      dyAxis("y", valueRange = c(30, 65), label="HR [%]") %>%
-      dyEvent(c("2017-05-12 07:30:00", "2017-05-12 18:00:00"), c("Inizio taratura", "Fine taratura"), labelLoc = "bottom")
+      dyAxis("y", valueRange = c(20, 80), label="HR [%]") %>%
+      dyEvent(c("2017-05-12 07:30:00", "2017-05-12 23:59:00"), c("Inizio taratura", "Fine taratura"), labelLoc = "bottom")
   })
   
       
