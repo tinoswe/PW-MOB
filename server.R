@@ -15,6 +15,10 @@ df_150517 <- make_day_frame("150517")
 df_160517 <- make_day_frame("160517")
 df_170517 <- make_day_frame("170517")
 df_180517 <- make_day_frame("180517")
+df_190517 <- make_day_frame("190517")
+df_200517 <- make_day_frame("200517")
+df_210517 <- make_day_frame("210517")
+df_220517 <- make_day_frame("220517")
 
 #function that returns the list of frame names!!
 all_frames <- list(df_080517,
@@ -27,7 +31,12 @@ all_frames <- list(df_080517,
                    df_150517,
                    df_160517,
                    df_170517,
-                   df_180517)
+                   df_180517,
+                   df_190517,
+                   df_200517,
+                   df_210517,
+                   df_220517)
+
 df_all <- Reduce(function(x, y) merge(x, y, all=TRUE), all_frames)
 
 
@@ -44,11 +53,14 @@ function(input, output) {
             "12/05/2017" = df_120517,#taratura sonde
             "13/05/2017" = df_130517,
             "14/05/2017" = df_140517,
-            "Settimana 19" = df_w19,
             "15/05/2017" = df_150517,
             "16/05/2017" = df_160517,
             "17/05/2017" = df_170517,
-            "18/05/2017" = df_180517)
+            "18/05/2017" = df_180517,
+            "19/05/2017" = df_190517,
+            "20/05/2017" = df_200517,
+            "21/05/2017" = df_210517,
+            "22/05/2017" = df_220517)
    })
 
   
