@@ -19,6 +19,7 @@ df_190517 <- make_day_frame("190517")
 df_200517 <- make_day_frame("200517")
 df_210517 <- make_day_frame("210517")
 df_220517 <- make_day_frame("220517")
+df_230517 <- make_day_frame("230517")
 
 #function that returns the list of frame names!!
 all_frames <- list(df_080517,
@@ -35,7 +36,8 @@ all_frames <- list(df_080517,
                    df_190517,
                    df_200517,
                    df_210517,
-                   df_220517)
+                   df_220517,
+                   df_230517)
 
 df_all <- Reduce(function(x, y) merge(x, y, all=TRUE), all_frames)
 
