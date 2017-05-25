@@ -3,43 +3,49 @@ library(lubridate)
 library(dygraphs)
 library(xts)
 
-source("make_day_frame.R")
-df_080517 <- make_day_frame("080517")
-df_090517 <- make_day_frame("090517")
-df_100517 <- make_day_frame("100517")
-df_110517 <- make_day_frame("110517")
-df_120517 <- make_day_frame("120517")
-df_130517 <- make_day_frame("130517")
-df_140517 <- make_day_frame("140517")
-df_150517 <- make_day_frame("150517")
-df_160517 <- make_day_frame("160517")
-df_170517 <- make_day_frame("170517")
-df_180517 <- make_day_frame("180517")
-df_190517 <- make_day_frame("190517")
-df_200517 <- make_day_frame("200517")
-df_210517 <- make_day_frame("210517")
-df_220517 <- make_day_frame("220517")
-df_230517 <- make_day_frame("230517")
+# source("make_day_frame.R")
+# df_080517 <- make_day_frame("080517")
+# df_090517 <- make_day_frame("090517")
+# df_100517 <- make_day_frame("100517")
+# df_110517 <- make_day_frame("110517")
+# df_120517 <- make_day_frame("120517")
+# df_130517 <- make_day_frame("130517")
+# df_140517 <- make_day_frame("140517")
+# df_150517 <- make_day_frame("150517")
+# df_160517 <- make_day_frame("160517")
+# df_170517 <- make_day_frame("170517")
+# df_180517 <- make_day_frame("180517")
+# df_190517 <- make_day_frame("190517")
+# df_200517 <- make_day_frame("200517")
+# df_210517 <- make_day_frame("210517")
+# df_220517 <- make_day_frame("220517")
+# df_230517 <- make_day_frame("230517")
+# df_240517 <- make_day_frame("240517")
+# df_250517 <- make_day_frame("250517")
+# 
+# #function that returns the list of frame names!!
+# all_frames <- list(df_080517,
+#                    df_090517,
+#                    df_100517,
+#                    df_110517,
+#                    df_120517,
+#                    df_130517,
+#                    df_140517,
+#                    df_150517,
+#                    df_160517,
+#                    df_170517,
+#                    df_180517,
+#                    df_190517,
+#                    df_200517,
+#                    df_210517,
+#                    df_220517,
+#                    df_230517,
+#                    df_240517,
+#                    df_250517)
+# 
+# df_all <- Reduce(function(x, y) merge(x, y, all=TRUE), all_frames)
 
-#function that returns the list of frame names!!
-all_frames <- list(df_080517,
-                   df_090517,
-                   df_100517,
-                   df_110517,
-                   df_120517,
-                   df_130517,
-                   df_140517,
-                   df_150517,
-                   df_160517,
-                   df_170517,
-                   df_180517,
-                   df_190517,
-                   df_200517,
-                   df_210517,
-                   df_220517,
-                   df_230517)
-
-df_all <- Reduce(function(x, y) merge(x, y, all=TRUE), all_frames)
+source("get_all_data.R")
 
 
 function(input, output) {
@@ -62,7 +68,9 @@ function(input, output) {
             "19/05/2017" = df_190517,
             "20/05/2017" = df_200517,
             "21/05/2017" = df_210517,
-            "22/05/2017" = df_220517)
+            "22/05/2017" = df_220517,
+            "23/05/2017" = df_230517,
+            "24/05/2017" = df_240517)
    })
 
   
