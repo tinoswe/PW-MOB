@@ -15,3 +15,4 @@ for (d in folders[-1]){
   }
 
 df_all <- Reduce(function(x, y) merge(x, y, all=TRUE), list_df)
+
