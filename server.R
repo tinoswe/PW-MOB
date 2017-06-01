@@ -5,6 +5,7 @@ library(xts)
 library(lubridate)
 
 source("get_all_data.R")
+
 df_may17 <- df_all[month(df_all$time)==5,]
 df_jun17 <- df_all[month(df_all$time)==6,]
 
@@ -24,7 +25,11 @@ function(input, output) {
     options = list(pageLength = 25,
                    dom  = 'tip',
                    autoWidth = TRUE,
-                   columnDefs = list(list(width = '150px', targets = c(0)))))
+                   columnDefs = list(list(width = '150px', 
+                                          targets = c(0))
+                                     )
+                   )
+    )
                    
     
   output$tgraph <- renderDygraph({
@@ -32,9 +37,10 @@ function(input, output) {
     data <- datasetInput()
     data_T <- data[, !grepl( "_HR" , names( data ) )]
     data_HR <- data[, !grepl( "_T" , names( data ) )]
-    xts(data_T[,names(data_T)!="time"],
-        strptime(data_T$time, format = "%Y-%m-%d %H:%M:%S"),
-        tzone = "Europe/Rome") %>%
+    xx<-xts(data_T[,names(data_T)!="time"],
+            strptime(data_T$time, format = "%Y-%m-%d %H:%M:%S")) 
+    indexTZ(xx) <- "Europe/Rome"
+    xx %>%
     dygraph() %>%
       dyAxis("y", valueRange = c(13, 40), label="Temp [°C]") %>% 
       dyLimit(as.numeric(16), color = "red") %>%
@@ -74,3 +80,10 @@ function(input, output) {
       
 }
 
+#data <- df_all
+#data_T <- data[, !grepl( "_HR" , names( data ) )]
+#data_HR <- data[, !grepl( "_T" , names( data ) )]
+#xx<-xts(data_T[,names(data_T)!="time"],
+#        strptime(data_T$time, format = "%Y-%m-%d %H:%M:%S"))
+#indexTZ(xx) <- "Europe/Rome"
+#tail(xx)

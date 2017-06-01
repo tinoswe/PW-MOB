@@ -5,6 +5,7 @@ library(shinythemes)
 library(shinyTime)
 
 fluidPage(
+
   theme = shinytheme("cosmo"),#  
   titlePanel('Monitoraggio temperatura e umidità'),
   sidebarLayout(
@@ -16,16 +17,26 @@ fluidPage(
                               "Maggio 2017",
                               "Giugno 2017")
       ),
+      
+      checkboxGroupInput("sensors", "Sonde:",
+                         choices = c("A" = "a_sens",
+                                     "B" = "b_sens",
+                                     "C" = "c_sens",
+                                     "D" = "d_sens"),
+                         selected = c("A","B","C","D"),
+                         inline = TRUE),
+      
       width=2,
       selected="Tutti i dati"
     ),
-
     
-    mainPanel(
+
+  mainPanel(
       
       tabsetPanel(
       
-        tabPanel("Dati", dataTableOutput('table')),
+        tabPanel("Dati", dataTableOutput('table'))
+        ,
         tabPanel("Grafico temperatura (cella + lab)",dygraphOutput("tgraph",
                                                                    width="100%")),
         tabPanel("Grafico umidità relativa (cella)",dygraphOutput("uc_graph",
