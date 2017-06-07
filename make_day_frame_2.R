@@ -26,7 +26,7 @@ make_day_frame <- function(day_ID){
   #                        sprintf("%02d", second(df_day$time)),
   #                        sep=":")
   #df_day$time <- c()
-  df <- na.omit(df)
+  #df <- na.omit(df)
   
   return(df)
   
