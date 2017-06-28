@@ -49,7 +49,8 @@ function(input, output) {
       dyEvent(c("2017-05-12 07:30:00", "2017-05-12 23:59:00"), c("Inizio taratura", "Fine taratura"), labelLoc = "bottom") %>%
       dyEvent(c("2017-06-05 07:00:00"), c("Chiller ON"), labelLoc = "bottom") %>%
       dyEvent(c("2017-06-06 14:45:00"), c("Switched off due to heavy rain"), color="grey", labelLoc = "top", strokePattern="dashed") %>%
-      dyEvent(c("2017-06-07 06:45:00"), c("Switched on after heavy rain"), labelLoc = "top", strokePattern="dashed", color="grey") 
+      dyEvent(c("2017-06-07 06:45:00"), c("Switched on after heavy rain"), labelLoc = "top", strokePattern="dashed", color="grey") %>%
+      dyEvent(c("2017-06-28 09:00:00"), c("New door opened and not closed"), labelLoc = "top", strokePattern="dashed", color="grey")
     }
   )
   
@@ -67,7 +68,10 @@ function(input, output) {
       dyLimit(as.numeric(45), color = "red") %>%
       dyLimit(as.numeric(55), color = "red") %>%
       dyEvent(c("2017-05-12 07:30:00", "2017-05-12 23:59:00"), c("Inizio taratura", "Fine taratura"), labelLoc = "bottom") %>%
-      dyEvent(c("2017-06-05 07:00:00"), c("Chiller ON"), labelLoc = "bottom")
+      dyEvent(c("2017-06-05 07:00:00"), c("Chiller ON"), labelLoc = "bottom")%>%
+        dyEvent(c("2017-06-06 14:45:00"), c("Switched off due to heavy rain"), color="grey", labelLoc = "top", strokePattern="dashed") %>%
+        dyEvent(c("2017-06-07 06:45:00"), c("Switched on after heavy rain"), labelLoc = "top", strokePattern="dashed", color="grey") %>%
+        dyEvent(c("2017-06-28 09:00:00"), c("New door opened and not closed"), labelLoc = "top", strokePattern="dashed", color="grey")
   })
 
   output$ulab_graph <- renderDygraph({
@@ -82,7 +86,10 @@ function(input, output) {
       dyOptions(useDataTimezone = FALSE) %>%
       dyAxis("y", valueRange = c(20, 80), label="HR [%]") %>%
       dyEvent(c("2017-05-12 07:30:00", "2017-05-12 23:59:00"), c("Inizio taratura", "Fine taratura"), labelLoc = "bottom") %>%
-      dyEvent(c("2017-06-05 07:00:00"), c("Chiller ON"), labelLoc = "bottom")
+      dyEvent(c("2017-06-05 07:00:00"), c("Chiller ON"), labelLoc = "bottom")%>%
+      dyEvent(c("2017-06-06 14:45:00"), c("Switched off due to heavy rain"), color="grey", labelLoc = "top", strokePattern="dashed") %>%
+      dyEvent(c("2017-06-07 06:45:00"), c("Switched on after heavy rain"), labelLoc = "top", strokePattern="dashed", color="grey") %>%
+      dyEvent(c("2017-06-28 09:00:00"), c("New door opened and not closed"), labelLoc = "top", strokePattern="dashed", color="grey")
   })
   
       
