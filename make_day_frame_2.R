@@ -1,6 +1,6 @@
 make_day_frame <- function(day_ID){
   
-  df <- read.csv(file=paste(day_ID,"/Report.csv", sep=""),
+  df <- read.csv(file=paste("Data/", day_ID,"/Report.csv", sep=""),
                  sep=";",
                  skip=4,
                  strip.white=TRUE,
