@@ -1,7 +1,7 @@
 source("make_day_frame_2.R")
 
 home_dir <- "/Users/olivo.martino/Code/RStudio/Projects/PW-MOB/Data"
-#setwd(home_dir)
+setwd(home_dir)
 
 folders <- list.dirs(full.names = TRUE)
 list_df <- list()
