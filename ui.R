@@ -18,13 +18,13 @@ fluidPage(
                               "Giugno 2017")
       ),
       
-      checkboxGroupInput("sensors", "Sonde:",
-                         choices = c("A" = "a_sens",
-                                     "B" = "b_sens",
-                                     "C" = "c_sens",
-                                     "D" = "d_sens"),
-                         selected = c("A","B","C","D"),
-                         inline = TRUE),
+      #checkboxGroupInput("sensors", "Sonde:",
+      #                   choices = c("A" = "a_sens",
+      #                               "B" = "b_sens",
+      #                               "C" = "c_sens",
+      #                               "D" = "d_sens"),
+      #                   selected = c("A","B","C","D"),
+      #                   inline = TRUE),
       
       width=2,
       selected="Tutti i dati"
