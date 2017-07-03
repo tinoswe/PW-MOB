@@ -15,7 +15,8 @@ fluidPage(
       selectInput("dataset", "Dati:",
                   choices = c("Tutti i dati",
                               "Maggio 2017",
-                              "Giugno 2017")
+                              "Giugno 2017",
+                              "Luglio 2017")
       ),
       
       #checkboxGroupInput("sensors", "Sonde:",

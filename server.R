@@ -8,6 +8,7 @@ source("get_all_data.R")
 
 df_may17 <- df_all[month(df_all$time)==5,]
 df_jun17 <- df_all[month(df_all$time)==6,]
+df_jul17 <- df_all[month(df_all$time)==7,]
 
 function(input, output) {
   
@@ -16,7 +17,8 @@ function(input, output) {
      switch(input$dataset,
             "Tutti i dati" = df_all,
             "Maggio 2017" = df_may17,
-            "Giugno 2017" = df_jun17)
+            "Giugno 2017" = df_jun17,
+            "Luglio 2017" = df_jul17)
    })
 
   output$table <- renderDataTable( #{
