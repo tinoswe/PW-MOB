@@ -38,7 +38,8 @@ fluidPage(
       
         tabPanel("Dati", dataTableOutput('table'))
         ,
-        tabPanel("Grafico temperatura (cella + lab)",dataTableOutput("tgraph"))#,
+        tabPanel("Grafico temperatura (cella + lab)",dygraphOutput("tgraph",
+                                                                   width="100%"))#,
         
         #tabPanel("Grafico temperatura (cella + lab)",dygraphOutput("tgraph",
         #                                                           width="100%"))#,

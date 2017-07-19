@@ -6,8 +6,9 @@ make_day_frame <- function(day_ID){
                  strip.white=TRUE,
                  stringsAsFactors = FALSE,
                  header=FALSE)
-  df$V1 <- strptime(df$V1,
-                    format="%Y/%m/%d %H:%M:%S")
+  df$V1 <- as.POSIXct(df$V1,
+                      format="%Y/%m/%d %H:%M:%S",
+                      tz="Europe/Rome")
   colnames(df) <- c("time",
                     "cella_T",
                     "cella_HR",

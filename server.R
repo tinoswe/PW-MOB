@@ -11,6 +11,18 @@ df_may17 <- df_all[month(df_all$time)==5,]
 df_jun17 <- df_all[month(df_all$time)==6,]
 df_jul17 <- df_all[month(df_all$time)==7,]
 
+#data <- df_jul17
+#data_T <- data[, !grepl( "_HR" , names( data ) )]
+#data_t <- data_T$time #as.POSIXct(data_T$time,
+#tz="Europe/Rome")
+
+#xx <- xts(data_T[,names(data_T)!="time"],
+#          data_t)
+
+#tzone(xx) <- "UTC"
+#index(tail(xx))
+#tail(xx)
+
 function(input, output) {
   
   datasetInput <-   reactive({
@@ -35,34 +47,32 @@ function(input, output) {
     )
                    
     
-  output$tgraph <- renderDataTable({
+  output$tgraph <- renderDygraph({
 
     library(reshape)
     data <- datasetInput()
 
     data_T <- data[, !grepl( "_HR" , names( data ) )]
     data_HR <- data[, !grepl( "_T" , names( data ) )]
-    data_t <- as.POSIXct(data_T$time)
+    data_t <- data_T$time #as.POSIXct(data_T$time,
+                          #tz="Europe/Rome")
+    
     xx <- xts(data_T[,names(data_T)!="time"],
               data_t)
-    
-    #indexTZ(xx) <- "Europe/Rome"
+    #OlsonNames()
+    indexTZ(xx) <- "Etc/GMT+2"
     #index(tail(xx))
-    dataset <- index(tail(xx))
-    
-    #dygraph(xx) 
-    #%>%
-    #  dyOptions(connectSeparatedPoints = FALSE) %>%
-    #  dyAxis("y", valueRange = c(13, 40), label="Temp [°C]") %>% 
-    #  dyLimit(as.numeric(16), color = "red") %>%
-    #  dyLimit(as.numeric(24), color = "red") 
-    
-      #%>%
-      #dyEvent(c("2017-05-12 07:30:00", "2017-05-12 23:59:00"), c("Inizio taratura", "Fine taratura"), labelLoc = "bottom") %>%
-      #dyEvent(c("2017-06-05 07:00:00"), c("Chiller ON"), labelLoc = "bottom") %>%
-      #dyEvent(c("2017-06-06 14:45:00"), c("Switched off due to heavy rain"), color="grey", labelLoc = "top", strokePattern="dashed") %>%
-      #dyEvent(c("2017-06-07 06:45:00"), c("Switched on after heavy rain"), labelLoc = "top", strokePattern="dashed", color="grey") %>%
-      #dyEvent(c("2017-06-28 09:00:00"), c("New door opened and not closed"), labelLoc = "top", strokePattern="dashed", color="grey")
+
+    dygraph(xx) %>%
+      dyOptions(connectSeparatedPoints = FALSE) %>%
+      dyAxis("y", valueRange = c(13, 40), label="Temp [°C]") %>% 
+      dyLimit(as.numeric(16), color = "red") %>%
+      dyLimit(as.numeric(24), color = "red") %>%
+      dyEvent(c("2017-05-12 06:30:00", "2017-05-12 22:59:00"), c("Inizio taratura", "Fine taratura"), labelLoc = "bottom") %>%
+      dyEvent(c("2017-06-05 05:00:00"), c("Chiller ON"), labelLoc = "bottom") %>%
+      dyEvent(c("2017-06-06 12:45:00"), c("Switched off due to heavy rain"), color="grey", labelLoc = "top", strokePattern="dashed") %>%
+      dyEvent(c("2017-06-07 04:45:00"), c("Switched on after heavy rain"), labelLoc = "top", strokePattern="dashed", color="grey") %>%
+      dyEvent(c("2017-06-28 07:00:00"), c("New door opened and not closed"), labelLoc = "top", strokePattern="dashed", color="grey")
     }
   )
   
