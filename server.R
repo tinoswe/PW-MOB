@@ -52,7 +52,7 @@ function(input, output) {
     library(reshape)
     data <- datasetInput()
 
-    data_T <- data[, !grepl( "_HR" , names( data ) )]
+    data_T <- data[, !grepl( "_HR" , names( data ) ) & !grepl( "cella_T" , names( data ) )]
     data_HR <- data[, !grepl( "_T" , names( data ) )]
     data_t <- data_T$time #as.POSIXct(data_T$time,
                           #tz="Europe/Rome")
