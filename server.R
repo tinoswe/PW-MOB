@@ -11,6 +11,7 @@ df_may17 <- df_all[month(df_all$time)==5,]
 df_jun17 <- df_all[month(df_all$time)==6,]
 df_jul17 <- df_all[month(df_all$time)==7,]
 df_aug17 <- df_all[month(df_all$time)==8,]
+df_sep17 <- df_all[month(df_all$time)==9,]
 
 #data <- df_jul17
 #data_T <- data[, !grepl( "_HR" , names( data ) )]
@@ -29,6 +30,7 @@ function(input, output) {
   datasetInput <-   reactive({
   
      switch(input$dataset,
+            "Settembre 2017" = df_sep17,
             "Agosto 2017" = df_aug17,
             "Luglio 2017" = df_jul17,
             "Giugno 2017" = df_jun17,
