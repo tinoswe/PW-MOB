@@ -13,13 +13,14 @@ fluidPage(
     sidebarPanel(
 
       selectInput("dataset", "Dati:",
-                  choices = c("Tutti i dati",
+                  choices = c(#"Tutti i dati",
                               "Maggio 2017",
                               "Giugno 2017",
                               "Luglio 2017",
                               "Agosto 2017",
-                              "Settembre 2017"),
-                  selected = "Settembre 2017"
+                              "Settembre 2017",
+                              "Ottobre 2017"),
+                  selected = "Ottobre 2017"
       ),
       
       #checkboxGroupInput("sensors", "Sonde:",

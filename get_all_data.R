@@ -31,14 +31,3 @@ for (d in list.files(folder_data)){
 df_all <- Reduce(function(x, y) merge(x, y, all=TRUE), list_df)
 df_all <- df_all[,c(1,4,5,6,7,8,9,10,11,2,3)]
 
-#plot(df_all$cella_HR,
-#     col="blue",
-#     type="l",
-#     ylim=c(10,80))
-#abline(h=45)
-#abline(h=55)
-
-#correction by hand on all temperature
-#DELTA_T <- 4.5
-#df_all[ , grepl( "_T" , names( df_all ) ) & !grepl( "cella_T" , names( df_all ) )] <- df_all[ , grepl( "_T" , names( df_all ) ) & !grepl( "cella_T" , names( df_all ) )] - DELTA_T
-

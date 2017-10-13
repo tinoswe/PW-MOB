@@ -3,39 +3,36 @@ library(lubridate)
 library(dygraphs)
 library(xts)
 library(lubridate)
+library(forecast)
 
-source("get_all_data.R")
+#source("get_all_data.R")
 
-#Sys.setenv(TZ="Europe/Rome")
 df_may17 <- df_all[month(df_all$time)==5,]
+source("mod_may17.R")
+df_may17 <- modify_may17(df_may17)
+
 df_jun17 <- df_all[month(df_all$time)==6,]
+source("mod_jun17.R")
+df_jun17 <- modify_jun17(df_jun17)
+
 df_jul17 <- df_all[month(df_all$time)==7,]
 df_aug17 <- df_all[month(df_all$time)==8,]
 df_sep17 <- df_all[month(df_all$time)==9,]
-
-#data <- df_jul17
-#data_T <- data[, !grepl( "_HR" , names( data ) )]
-#data_t <- data_T$time #as.POSIXct(data_T$time,
-#tz="Europe/Rome")
-
-#xx <- xts(data_T[,names(data_T)!="time"],
-#          data_t)
-
-#tzone(xx) <- "UTC"
-#index(tail(xx))
-#tail(xx)
+df_oct17 <- df_all[month(df_all$time)==10,]
 
 function(input, output) {
   
   datasetInput <-   reactive({
   
      switch(input$dataset,
+            "Ottobre 2017" = df_oct17,
             "Settembre 2017" = df_sep17,
             "Agosto 2017" = df_aug17,
             "Luglio 2017" = df_jul17,
             "Giugno 2017" = df_jun17,
-            "Maggio 2017" = df_may17,
-            "Tutti i dati" = df_all)
+            "Maggio 2017" = df_may17#,
+            #"Tutti i dati" = df_all
+            )
    })
 
   output$table <- renderDataTable( #{
