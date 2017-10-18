@@ -2,8 +2,7 @@ name: pw-mob
 title:
 account: catas
 server: shinyapps.io
-hostUrl: https://api.shinyapps.io/v1
 appId: 193200
-bundleId: 1030409
+bundleId: 1032202
 url: https://catas.shinyapps.io/pw-mob/
-when: 1508231223.88736
+when: 1508308899.32653

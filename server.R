@@ -76,8 +76,8 @@ function(input, output) {
     dygraph(xx) %>%
       dyOptions(connectSeparatedPoints = FALSE) %>%
       dyAxis("y", valueRange = c(13, 40), label="Temp [°C]") %>% 
-      dyLimit(as.numeric(16), color = "red") %>%
-      dyLimit(as.numeric(24), color = "red") %>%
+      dyLimit(as.numeric(15.5), color = "red") %>%
+      dyLimit(as.numeric(24.5), color = "red") %>%
       dyEvent(c("2017-05-12 06:30:00", "2017-05-12 22:59:00"), c("Inizio taratura", "Fine taratura"), labelLoc = "bottom") %>%
       dyEvent(c("2017-06-05 05:00:00"), c("Chiller ON"), labelLoc = "bottom") %>%
       dyEvent(c("2017-06-06 12:45:00"), c("Switched off due to heavy rain"), color="grey", labelLoc = "top", strokePattern="dashed") %>%
