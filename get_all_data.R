@@ -2,7 +2,7 @@ source("make_day_frame_2.R")
 
 #home_dir_basename <- "/Users/olivo.martino/Code/RStudio/Projects/PW-MOB/"
 home_dir_basename <- "./"
-home_dir <- "Data_NEW"
+home_dir <- "Data_MOB"
 #setwd(home_dir)
 
 folder_data <- list.dirs(path=paste(home_dir_basename,
