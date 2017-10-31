@@ -8,24 +8,24 @@ library(forecast)
 source("get_all_data.R")
 
 df_may17 <- df_all[month(df_all$time)==5,]
-source("mod_may17.R")
-df_may17 <- modify_may17(df_may17)
+#source("mod_may17.R")
+#df_may17 <- modify_may17(df_may17)
 
 df_jun17 <- df_all[month(df_all$time)==6,]
-source("mod_jun17.R")
-df_jun17 <- modify_jun17(df_jun17)
+#source("mod_jun17.R")
+#df_jun17 <- modify_jun17(df_jun17)
 
 df_jul17 <- df_all[month(df_all$time)==7,]
-source("mod_jul17.R")
-df_jul17 <- modify_jul17(df_jul17)
+#source("mod_jul17.R")
+#df_jul17 <- modify_jul17(df_jul17)
 
 df_aug17 <- df_all[month(df_all$time)==8,]
-source("mod_aug17.R")
-df_aug17 <- modify_aug17(df_aug17)
+#source("mod_aug17.R")
+#df_aug17 <- modify_aug17(df_aug17)
 
 df_sep17 <- df_all[month(df_all$time)==9,]
-source("mod_sep17.R")
-df_sep17 <- modify_sep17(df_sep17)
+#source("mod_sep17.R")
+#df_sep17 <- modify_sep17(df_sep17)
 
 df_oct17 <- df_all[month(df_all$time)==10,]
 
