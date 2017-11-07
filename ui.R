@@ -12,7 +12,7 @@ fluidPage(
     
     sidebarPanel(
 
-      selectInput("dataset", "Dati:",
+      selectInput("dataset", "Mese:",
                   choices = c(#"Tutti i dati",
                               "Maggio 2017",
                               "Giugno 2017",
@@ -24,15 +24,15 @@ fluidPage(
                   selected = "Novembre 2017"
       ),
       
-      #checkboxGroupInput("sensors", "Sonde:",
-      #                   choices = c("A" = "a_sens",
-      #                               "B" = "b_sens",
-      #                               "C" = "c_sens",
-      #                               "D" = "d_sens"),
-      #                   selected = c("A","B","C","D"),
-      #                   inline = TRUE),
+      checkboxGroupInput("sensors", "Sonde:",
+                         choices = c("A" = "a_sens",
+                                     "B" = "b_sens",
+                                     "C" = "c_sens",
+                                     "D" = "d_sens"),
+                         selected = c("A","B","C","D"),
+                         inline = TRUE),
       
-      width=2#,
+      width=3  #,
       #selected="Luglio 2017"
     ),
     

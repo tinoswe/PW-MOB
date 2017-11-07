@@ -17,13 +17,13 @@ for (d in list.files(folder_data)){
   i <- i + 1
   #setwd(home_dir)
   #f <- list.files(d)
-  print(as.character(basename(d)))
+  #print(as.character(basename(d)))
   
   #df <- make_day_frame(as.character(basename(d)))
 
-  df <- make_day_frame_NEW(home_dir_basename, 
-                           home_dir, 
-                           as.character(d))
+  df <- make_day_frame(home_dir_basename, 
+                       home_dir, 
+                       as.character(d))
   
   list_df[[i]] <- df
   }
