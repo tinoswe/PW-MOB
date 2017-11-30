@@ -24,19 +24,21 @@ fluidPage(
                   selected = "Novembre 2017"
       ),
       
-      checkboxGroupInput("sensors", "Sonde:",
-                         choices = c("A" = "a_sens",
-                                     "B" = "b_sens",
-                                     "C" = "c_sens",
-                                     "D" = "d_sens"),
-                         selected = c("A","B","C","D"),
-                         inline = TRUE),
+      #checkboxGroupInput("sensors", "Sonde:",
+      #                   choices = c("A" = "a_sens",
+      #                               "B" = "b_sens",
+      #                               "C" = "c_sens",
+      #                               "D" = "d_sens"),
+      #                   selected = c("A","B","C","D"),
+      #                   inline = TRUE),
+      
+      #dateRangeInput("dates", label = "Date range:", 
+      #               start=min(""), end = ""),
       
       width=3  #,
       #selected="Luglio 2017"
     ),
     
-
   mainPanel(
       
       tabsetPanel(
@@ -48,10 +50,9 @@ fluidPage(
         #tabPanel("Grafico temperatura CELLA",dygraphOutput("tgraph",
         #                                                           width="100%")),
         tabPanel("Grafico umidità relativa CELLA",dygraphOutput("uc_graph",
-                                                                  width="100%"))
-        #tabPanel("Grafico umidità relativa (lab)",dygraphOutput("ulab_graph",
-        #                                                        width="100%")
-        #)
+                                                                  width="100%")),
+        tabPanel("Grafico umidità relativa LAB",dygraphOutput("ulab_graph",
+                                                                width="100%"))
         
         
         )

@@ -42,8 +42,7 @@ function(input, output) {
             "Agosto 2017" = df_aug17,
             "Luglio 2017" = df_jul17,
             "Giugno 2017" = df_jun17,
-            "Maggio 2017" = df_may17#,
-            #"Tutti i dati" = df_all
+            "Maggio 2017" = df_may17
             )
    })
 
@@ -110,24 +109,24 @@ function(input, output) {
        dyEvent(c("2017-06-28 09:00:00"), c("New door opened and not closed"), labelLoc = "top", strokePattern="dashed", color="grey")
  })
 
-#  output$ulab_graph <- renderDygraph({
-#    library(reshape)
-#    data <- datasetInput()
-#    data_T <- data[, !grepl( "_HR" , names( data ) )]
-#    data_HR <- data[, grepl( "time" , names( data ) ) | grepl( "A_HR" , names( data ) ) | grepl( "B_HR" , names( data ) ) | grepl( "C_HR" , names( data ) ) | grepl( "D_HR" , names( data ) )]  #!grepl( "_T" , names( data ) )
-#    xx <- xts(data_HR[,names(data_HR)!="time"],
-#        strptime(data_HR$time, format = "%Y-%m-%d %H:%M:%S"),
-#        tz = "UTC"
-#        ) 
-#    dygraph(xx) %>%
-#      dyOptions(useDataTimezone = TRUE) %>%
-#      dyAxis("y", valueRange = c(20, 80), label="HR [%]") %>%
-#      dyEvent(c("2017-05-12 07:30:00", "2017-05-12 23:59:00"), c("Inizio taratura", "Fine taratura"), labelLoc = "bottom") %>%
-#      dyEvent(c("2017-06-05 07:00:00"), c("Chiller ON"), labelLoc = "bottom")%>%
-#      dyEvent(c("2017-06-06 14:45:00"), c("Switched off due to heavy rain"), color="grey", labelLoc = "top", strokePattern="dashed") %>%
-#      dyEvent(c("2017-06-07 06:45:00"), c("Switched on after heavy rain"), labelLoc = "top", strokePattern="dashed", color="grey") %>%
-#      dyEvent(c("2017-06-28 09:00:00"), c("New door opened and not closed"), labelLoc = "top", strokePattern="dashed", color="grey")
-#  })
+ output$ulab_graph <- renderDygraph({
+   library(reshape)
+   data <- datasetInput()
+   data_T <- data[, !grepl( "_HR" , names( data ) )]
+   data_HR <- data[, grepl( "time" , names( data ) ) | grepl( "A_HR" , names( data ) ) | grepl( "B_HR" , names( data ) ) | grepl( "C_HR" , names( data ) ) | grepl( "D_HR" , names( data ) )]  #!grepl( "_T" , names( data ) )
+   xx <- xts(data_HR[,names(data_HR)!="time"],
+       strptime(data_HR$time, format = "%Y-%m-%d %H:%M:%S"),
+       tz = "UTC"
+       )
+   dygraph(xx) %>%
+     dyOptions(useDataTimezone = TRUE) %>%
+     dyAxis("y", valueRange = c(0, 100), label="HR [%]") %>%
+     dyEvent(c("2017-05-12 07:30:00", "2017-05-12 23:59:00"), c("Inizio taratura", "Fine taratura"), labelLoc = "bottom") %>%
+     dyEvent(c("2017-06-05 07:00:00"), c("Chiller ON"), labelLoc = "bottom")%>%
+     dyEvent(c("2017-06-06 14:45:00"), c("Switched off due to heavy rain"), color="grey", labelLoc = "top", strokePattern="dashed") %>%
+     dyEvent(c("2017-06-07 06:45:00"), c("Switched on after heavy rain"), labelLoc = "top", strokePattern="dashed", color="grey") %>%
+     dyEvent(c("2017-06-28 09:00:00"), c("New door opened and not closed"), labelLoc = "top", strokePattern="dashed", color="grey")
+ })
   
       
 }
