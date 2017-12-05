@@ -31,11 +31,14 @@ df_oct17 <- df_all[month(df_all$time)==10,]
 
 df_nov17 <- df_all[month(df_all$time)==11,]
 
+df_dec17 <- df_all[month(df_all$time)==12,]
+
 function(input, output) {
   
   datasetInput <-   reactive({
   
      switch(input$dataset,
+            "Dicembre 2017" = df_dec17,
             "Novembre 2017" = df_nov17,
             "Ottobre 2017" = df_oct17,
             "Settembre 2017" = df_sep17,
