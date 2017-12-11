@@ -48,12 +48,12 @@ fluidPage(
         ,
         tabPanel("Grafico temperature LAB",dygraphOutput("tgraph",
                                                                    width="100%")),
+        tabPanel("Grafico umidità relativa LAB",dygraphOutput("ulab_graph",
+                                                              width="100%")),
         #tabPanel("Grafico temperatura CELLA",dygraphOutput("tgraph",
         #                                                           width="100%")),
         tabPanel("Grafico umidità relativa CELLA",dygraphOutput("uc_graph",
-                                                                  width="100%")),
-        tabPanel("Grafico umidità relativa LAB",dygraphOutput("ulab_graph",
-                                                                width="100%"))
+                                                                  width="100%"))
         
         
         )

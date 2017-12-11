@@ -80,7 +80,7 @@ function(input, output) {
 
     dygraph(xx) %>%
       dyOptions(connectSeparatedPoints = FALSE) %>%
-      dyAxis("y", valueRange = c(13, 40), label="Temp [°C]") %>% 
+      dyAxis("y", valueRange = c(10, 35), label="Temp [°C]") %>% 
       dyLimit(as.numeric(15.5), color = "red") %>%
       dyLimit(as.numeric(24.5), color = "red") %>%
       dyEvent(c("2017-05-12 06:30:00", "2017-05-12 22:59:00"), c("Inizio taratura", "Fine taratura"), labelLoc = "bottom") %>%
@@ -133,30 +133,4 @@ function(input, output) {
   
       
 }
-
-#data <- df_all
-#tail(df_all)
-
-#data_HR <- data[, !grepl( "_T" , names( data ) )]
-#data_T <- data[, !grepl( "_HR" , names( data ) )]
-#data_t <- as.POSIXct(data_T$time,
-#                     tz = "Europe/Rome")
-#tail(data_t)
-
-#xx <- xts(data_T[,names(data_T)!="time"],
-#          data_t,
-#          tz = "Europe/Rome")
-#tail(xx)
-
-#        #strptime(data_T$time, format = "%Y-%m-%d %H:%M:%S"),
-#        as.POSIXct(data_T$time,
-#                   tz="Europe/Rome"))
-##tail(xx)
-#indexTZ(xx)
-#dygraph(xx) %>%
-#  dyOptions(useDataTimezone = TRUE,
-#    connectSeparatedPoints = FALSE) %>%
-#  dyAxis("y", valueRange = c(13, 40), label="Temp [°C]") %>% 
-#  dyLimit(as.numeric(16), color = "red") %>%
-#  dyLimit(as.numeric(24), color = "red")
 
