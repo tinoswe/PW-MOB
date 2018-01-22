@@ -21,8 +21,9 @@ fluidPage(
                               "Settembre 2017",
                               "Ottobre 2017",
                               "Novembre 2017",
-                              "Dicembre 2017"),
-                  selected = "Dicembre 2017"
+                              "Dicembre 2017",
+                              "Gennaio 2018"),
+                  selected = "Gennaio 2018"
       ),
       
       #checkboxGroupInput("sensors", "Sonde:",
