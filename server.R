@@ -35,13 +35,17 @@ df_dec17 <- df_all[month(df_all$time)==12 & year(df_all$time)==2017,]
 
 df_jan18 <- df_all[month(df_all$time)==1 & year(df_all$time)==2018,]
 
+df_feb18 <- df_all[month(df_all$time)==2 & year(df_all$time)==2018,]
 
+df_mar18 <- df_all[month(df_all$time)==3 & year(df_all$time)==2018,]
 
 function(input, output) {
   
   datasetInput <-   reactive({
   
      switch(input$dataset,
+            "Marzo 2018" = df_mar18,
+            "Febbraio 2018" = df_feb18,
             "Gennaio 2018" = df_jan18,
             "Dicembre 2017" = df_dec17,
             "Novembre 2017" = df_nov17,
